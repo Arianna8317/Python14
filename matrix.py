@@ -14,7 +14,6 @@ class Matrix:
         self.matrix = list(args)
         for elem in self.matrix:
             for i in range(len(elem)):
-                print(type(elem[i]))
                 if not isinstance(elem[i], numbers.Number):
                     raise TextError(elem[i])
         
@@ -45,7 +44,7 @@ class Matrix:
     def __eq__(self, other):
         for i in range(len(self.matrix)):
             for j in range(len(other.matrix[i])):
-                 if self.matrix[i][j] != other.matrix[i][j]:
+                if self.matrix[i][j] != other.matrix[i][j]:
                     return False
         return True         
 
@@ -67,8 +66,6 @@ class Matrix:
                 sum_2 = [] 
         return result
     
-    def if_identity_matrix(self):
-        pass
 
 
 #mat_1 = Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2])

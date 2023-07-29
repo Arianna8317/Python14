@@ -10,16 +10,11 @@ class TextError(Exception):
         return f'В матрицу можно записывать только числа!! Вы указали {self.value}'
 
 class Matrix:
-    """
-    >>> Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2]) == Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2])
-    True
     
-    """
     def __init__(self, *args):
         self.matrix = list(args)
         for elem in self.matrix:
             for i in range(len(elem)):
-                print(type(elem[i]))
                 if not isinstance(elem[i], numbers.Number):
                     raise TextError(elem[i])
         
@@ -30,7 +25,7 @@ class Matrix:
    
     def __add__(self, other):
         """
-        >>> Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2]) + Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2]) == Matrix([2, -6, 10], [14, -10, -2], [6, -4, 4])
+        >>> Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2]) + Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2]) ==  Matrix([2, -6, 10], [14, -10, -2], [6, -4, 4])
         True
         """
         result = Matrix()
@@ -46,7 +41,6 @@ class Matrix:
         """
         >>> Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2]) == Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2])
         True
-    
         """
         for i in range(len(self.matrix)):
             for j in range(len(other.matrix[i])):
@@ -78,22 +72,7 @@ class Matrix:
                 result.matrix.append(sum_2)   
                 sum_2 = [] 
         return result
-
-
-#mat_1 = Matrix(['fw', 3, 4], [3, 5, 8], [1, 0, 2])
-#mat_3 = Matrix([12, 3, "43"], [3, "5d", 8], [1, 0, "33"])  
-#print(mat_3)
-'''
-print()
-mat_2 = Matrix([1, -3, 5], [7, -5, -1], [3, -2, 2])  
-print(mat_2)
-print("\n Сумма матриц \n")
-print(f"{mat_1 + mat_2}") 
-print("\n Сравнение матриц \n")
-print(mat_1 == mat_2)
-print(mat_1 != mat_3)
-print("\n Умножение матриц \n")
-print(f"{mat_1 * mat_3}")
-'''
+    
+    
 if __name__ == '__main__':
     doctest.testmod(verbose=True)
